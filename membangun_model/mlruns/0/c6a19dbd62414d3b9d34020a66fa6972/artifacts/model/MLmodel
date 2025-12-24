@@ -1,0 +1,40 @@
+artifact_path: model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.12
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+mlflow_version: 2.18.0
+model_size_bytes: 90859
+model_uuid: c3bdf3dd56e2409ebe2fb617aaeda04d
+run_id: c6a19dbd62414d3b9d34020a66fa6972
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "double", "name": "rating_average", "required": true}, {"type":
+    "double", "name": "pageCount", "required": true}, {"type": "double", "name": "publicationYear",
+    "required": true}, {"type": "double", "name": "book_age", "required": true}, {"type":
+    "double", "name": "title_length", "required": true}, {"type": "double", "name":
+    "adapted_to_movie", "required": true}, {"type": "double", "name": "genre_encoded",
+    "required": true}, {"type": "double", "name": "language_encoded", "required":
+    true}, {"type": "double", "name": "age_category_encoded", "required": true}, {"type":
+    "double", "name": "description_length", "required": true}, {"type": "double",
+    "name": "tags_count", "required": true}, {"type": "double", "name": "publisher_encoded",
+    "required": true}, {"type": "double", "name": "most_popular_country_encoded",
+    "required": true}, {"type": "double", "name": "rating_category_encoded", "required":
+    true}]'
+  outputs: '[{"type": "long", "required": true}]'
+  params: null
+utc_time_created: '2025-12-24 07:04:56.529425'

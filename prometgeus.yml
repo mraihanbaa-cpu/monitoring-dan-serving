@@ -6,3 +6,55 @@ scrape_configs:
     static_configs:
       # host.docker.internal adalah cara Docker mengakses localhost laptop Anda
       - targets: ['host.docker.internal:5000']
+
+
+
+
+
+
+
+
+What this provides
+- A FastAPI exporter exposing model inference metrics at `/metrics` (see `prometheus_exporter.py`).
+- Prometheus config example in `prometheus.yml` to scrape the exporter.
+- A Grafana dashboard template `grafana_dashboard.json` you can import.
+
+Quick start (local)
+1. Install deps:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+2. Run the exporter:
+
+```powershell
+python -m uvicorn "prometheus_exporter:app" --host 0.0.0.0 --port 8000
+```
+
+3. Ensure Prometheus loads the `prometheus.yml` in this folder and reload it (or restart Prometheus). To trigger a reload:
+
+```powershell
+curl -X POST http://localhost:9090/-/reload
+```
+
+4. Verify metrics are exposed:
+
+```powershell
+curl http://localhost:8000/metrics
+curl http://localhost:9090/api/v1/targets
+```
+
+5. Import the dashboard: open Grafana → Create → Import → upload `grafana_dashboard.json` or paste JSON. Choose your Prometheus datasource.
+
+Prometheus queries used in the dashboard
+- Throughput (rps): `sum by (model_version) (rate(inference_requests_total[1m]))`
+- Error rate: `sum by (model_version) (rate(inference_requests_total{status="error"}[5m]))`
+- Latency p95: `histogram_quantile(0.95, sum(rate(inference_latency_seconds_bucket[5m])) by (le, model_version))`
+- Pred counts: `sum by (label, model_version) (rate(model_prediction_total[5m]))`
+- Model up: `model_server_up`
+- Model accuracy: `model_accuracy{model_version="v1"}`
+
+Notes
+- Make sure `prometheus.yml` targets `localhost:8000` (this repo contains a sample).
+- Keep `model_version` low-cardinality (do not label with user-specific values).

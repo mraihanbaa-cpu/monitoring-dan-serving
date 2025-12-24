@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1766559899170
+current_stage: None
+description: null
+last_updated_timestamp: 1766559899170
+name: BookPopularity_Best_RandomSearch
+run_id: c6a19dbd62414d3b9d34020a66fa6972
+run_link: null
+source: file:///content/mlruns/0/c6a19dbd62414d3b9d34020a66fa6972/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///content/mlruns/0/c6a19dbd62414d3b9d34020a66fa6972/artifacts/model
+user_id: null
+version: 1

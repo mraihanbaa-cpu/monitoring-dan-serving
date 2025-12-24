@@ -1,0 +1,15 @@
+artifact_uri: file:///content/mlruns/0/c6a19dbd62414d3b9d34020a66fa6972/artifacts
+end_time: 1766559899172
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c6a19dbd62414d3b9d34020a66fa6972
+run_name: RandomizedSearchCV_Best_Model
+run_uuid: c6a19dbd62414d3b9d34020a66fa6972
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1766559887594
+status: 3
+tags: []
+user_id: mraihanbaa-cpu
